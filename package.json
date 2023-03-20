@@ -1,0 +1,25 @@
+{
+  "name": "pwa_22_23",
+  "version": "1.0.0",
+  "description": "For a course called progressive web app from the minor webdev of Hogeschool van Amsterdam",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rvdegroen/pwa_22_23.git"
+  },
+  "keywords": [
+    "web",
+    "app",
+    "from",
+    "scratch"
+  ],
+  "author": "Roshnie de Groen",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/rvdegroen/pwa_22_23/issues"
+  },
+  "homepage": "https://github.com/rvdegroen/pwa_22_23#readme"
+}
