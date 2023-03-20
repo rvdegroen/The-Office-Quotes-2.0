@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Office Quiz</title>
+    <!--css-->
+    <link rel="stylesheet" href="./style.css" />
+    <!--fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cutive&family=Lato:wght@400;700&family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <!-- from w3schools: A script that will be downloaded in parallel to parsing the page, and executed after the page has finished parsing -->
+    <script src="./scripts/app.js" type="module" defer></script>
+  </head>
+
+  
+  <body>
+    <header>
+      <nav>
+        <a href="#/">Home</a>
+        <a href="#/game">Game</a>
+        <a href="#/characters">Characters</a>
+      </nav>
+    </header>
+    <main>
+      <div id="pageHome" class="page hidden">
+        <h1>The Office Quiz</h1>
+        <p>Welcome to The Office Quiz! Are you a stressed student and care for some laughter from The Office? Take a quick look at our quiz!</p>
+      </div>
+
+      <div id="pageGame" class="page hidden">
+        <h1>The Office Quotes Quiz</h1>
+        
+        <div id="game__quote"></div>
+        <div id="game__choices"></div>
+      </div>
+
+      <div id="pageCharacters" class="page hidden">
+        <h1>Characters</h1>
+
+        <input id="characters__filter" placeholder="Search character"></input>
+        
+        <div>
+          <button id="characters__sortAsc">Sort by first name ascending</button>
+          <button id="characters__sortDesc">Sort by first name descending</button>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>First name</th>
+              <th>Last name</th>
+            </tr>
+          </thead>
+          <tbody id="characters__tbody"></tbody>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>
