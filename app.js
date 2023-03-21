@@ -1,15 +1,31 @@
+// IMPORTS
 import express from "express";
-// import dotenv from "dotenv";
 
-// dotenv.config();
-
+// VARIABLES
 const app = express();
+const port = 3000;
 
+// MIDDLEWARE
+// for static files
+app.use(express.static("public"));
+
+app.set("views", "./views");
 app.set("view engine", "ejs");
-app.use(express.static("static"));
 
-app.get("/", function (req, res) {
-	res.send("Hello World");
+// MIDDLEWARE ROUTES
+// homepage
+app.get("/", (req, res) => {
+	res.render("pages/index");
 });
 
-app.listen(3000);
+// game
+app.get("/game", (req, res) => {
+	res.render("pages/game");
+});
+
+// characters
+app.get("/characters", (req, res) => {
+	res.render("pages/characters");
+});
+
+app.listen(port);
