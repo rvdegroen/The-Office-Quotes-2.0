@@ -1,5 +1,7 @@
 // IMPORTS
 import express from "express";
+import {router as frontendRouter} from "./routes/frontend.js";
+import {router as apiRouter} from "./routes/api.js";
 
 // VARIABLES
 const app = express();
@@ -13,19 +15,10 @@ app.set("views", "./views");
 app.set("view engine", "ejs");
 
 // MIDDLEWARE ROUTES
-// homepage
-app.get("/", (req, res) => {
-	res.render("pages/index");
-});
+//homepage
+app.use("/", frontendRouter);
 
-// game
-app.get("/game", (req, res) => {
-	res.render("pages/game");
-});
-
-// characters
-app.get("/characters", (req, res) => {
-	res.render("pages/characters");
-});
+// api
+app.use("/api", apiRouter);
 
 app.listen(port);
