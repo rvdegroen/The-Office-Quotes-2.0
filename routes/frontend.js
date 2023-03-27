@@ -5,7 +5,7 @@ import express from "express";
 export const router = express.Router();
 
 // homepage
-router.get("/", (reg, res) => {
+router.get("/", (req, res) => {
 	res.render("pages/index");
 });
 
