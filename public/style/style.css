@@ -1,14 +1,19 @@
 /*custom colors*/
 :root {
-  --background-color: rgb(65, 65, 65);
-  --text-color: white;
-  --text-color2: black;
-  --paper-background: white;
-  --paper-shadow: 0 0 1rem rgba(0, 0, 0, 0.123);
-  --sticky-note-bg: #ffea9f;
-  --button-color: #a09f9c ;
-  --active-color: #7c54ff;
-  --hover-color: #6e4be1;
+  --background-color: #2E2147;
+  --nav-color: #13121F;
+  --active-color: #00DD8D;
+  --hover-color: #00FFA3;
+  --text-dark: black;
+  --text-light: white;
+  --paper-color: white;
+  --paper-shadow: 10px 10px #0000009c;
+  --sticky-shadow: 5px 5px #0000009c;
+  --button-shadow: 5px 5px #E46503;
+  --main-button: #F3C132;
+  --hover-button:#fba106;
+  --input-background:#e9e9e9;
+  --input-focus: white;
 }
 
 /*remove browser styling*/
@@ -24,22 +29,32 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: "Work Sans", sans-serif;
+  color: var(--text-light);
 }
 
 nav {
-  background: black;
+  background: var(--nav-color);
   padding: 1em;
   display: flex;
-  gap: 20px;
+  gap: 15px;
 }
 
 a {
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--text-light);
+  transition: .2s ease-in-out;
+  padding-bottom:4px;
+  border-bottom: 3px solid transparent;
 }
 
 a:hover {
-  opacity: 50%;
+  color: var(--hover-color);
+  border-bottom: 3px solid var(--hover-color);
+}
+
+a:active {
+  color: var(--hover-color);
+  border-bottom: 3px solid var(--hover-color);
 }
 
 main > div,
@@ -71,53 +86,43 @@ td {
   padding: 0.1em;
 }
 
+button {
+  background-color: var(--main-button);
+  color: var(--text-dark);
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 0.2em;
+  box-shadow: var(--button-shadow);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: var(--hover-button);
+  box-shadow:none;
+}
+
+/* homepage */
+#homepage button {
+  margin-top:1em;
+}
+
 /* quiz page */
 #pageGame button {
-  width: 100px;
-  height: 70px;
-  background-color: rgb(249, 249, 161);
+  width: 90px;
+  height: 110px;
   border: none;
-  box-shadow: 0px 0px 5px black;
-}
-
-/* page characters */
-#pageCharacters input {
-  padding: 0.4em;
-  border-radius: 2em;
-  border: 3px black solid;
-}
-
-#pageCharacters input:hover {
-  outline:none;
-  border: 3px var(--hover-color) solid;
-  }
-
-#pageCharacters input:focus {
-outline:none;
-border: 3px var(--active-color) solid;
-}
-
-#characters__sortAsc,
-#characters__sortDesc{
-  width: 10em;
-  margin-bottom: 0.5em;
-  border-radius: .3em;
-  font-size: 0.7em;
-  padding: 0.2em;
-  border: none;
-}
-
-/* other */
-
-.hidden {
-  display: none;
+  background-color: var(--main-button);
+  box-shadow: var(--sticky-shadow);
+  border-radius:0.2em;
+  color: var(--text-dark);
 }
 
 #game__quote {
-  width: 300px;
-  border: 1px solid grey;
-  border-radius: 4px;
-  padding: 1em;
+  width: 250px;
+  background-color: var(--paper-color);
+  padding: 20px;
+  box-shadow: var(--paper-shadow);
 }
 
 #game__choices {
@@ -128,8 +133,64 @@ border: 3px var(--active-color) solid;
   padding: 1em;
 }
 
+/* #game__choices {
+  background-color: var(--main-button);
+  box-shadow: var(--sticky-shadow);
+  width: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: .5em;
+} */
+
 #game__choices button {
   flex: 1;
+}
+
+/* page characters */
+#pageCharacters input {
+  background-color: var(--input-background);
+  padding: 0.4em;
+  margin-bottom:1em;
+  border-radius: .2em;
+  border: 3px solid transparent;
+  transition: 0.2s ease-in-out;
+}
+
+#pageCharacters input:hover {
+  outline:none;
+  background-color: #f1f1f1;
+  border: 3px solid var(--main-button);
+  }
+
+#pageCharacters input:focus {
+outline:none;
+background-color: var(--input-focus);
+border: 3px solid var(--hover-button);
+}
+
+#characters__sortAsc,
+#characters__sortDesc{
+  width: 10em;
+  border-radius: .3em;
+  font-size: 0.7em;
+  padding: 0.2em;
+  border: none;
+}
+
+#sortingButtons {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
+  margin: 0 1em;
+}
+
+/* other */
+
+.hidden {
+  display: none;
 }
 
 #characters__filter {
