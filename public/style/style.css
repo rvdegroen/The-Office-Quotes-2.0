@@ -6,6 +6,9 @@
   --paper-background: white;
   --paper-shadow: 0 0 1rem rgba(0, 0, 0, 0.123);
   --sticky-note-bg: #ffea9f;
+  --button-color: #a09f9c ;
+  --active-color: #7c54ff;
+  --hover-color: #6e4be1;
 }
 
 /*remove browser styling*/
@@ -78,16 +81,30 @@ td {
 }
 
 /* page characters */
-#pageCharacters button {
-  background-color: rgb(59, 59, 59);
-  color: white;
-  padding: 0.5em;
-  border-radius: 10px;
-  cursor: pointer;
+#pageCharacters input {
+  padding: 0.4em;
+  border-radius: 2em;
+  border: 3px black solid;
 }
 
-#pageCharacters input {
-  padding: 0.5em;
+#pageCharacters input:hover {
+  outline:none;
+  border: 3px var(--hover-color) solid;
+  }
+
+#pageCharacters input:focus {
+outline:none;
+border: 3px var(--active-color) solid;
+}
+
+#characters__sortAsc,
+#characters__sortDesc{
+  width: 10em;
+  margin-bottom: 0.5em;
+  border-radius: .3em;
+  font-size: 0.7em;
+  padding: 0.2em;
+  border: none;
 }
 
 /* other */
