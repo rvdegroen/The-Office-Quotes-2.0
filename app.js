@@ -1,7 +1,7 @@
 // IMPORTS
 import express from "express";
 import {router as frontendRouter} from "./routes/frontend.js";
-import {router as apiRouter} from "./routes/api.js";
+// import {router as apiRouter} from "./routes/api.js";
 
 // VARIABLES
 const app = express();
@@ -19,6 +19,6 @@ app.set("view engine", "ejs");
 app.use("/", frontendRouter);
 
 // api
-app.use("/api", apiRouter);
+// app.use("/api", apiRouter);
 
 app.listen(port);
