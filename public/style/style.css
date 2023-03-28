@@ -85,7 +85,7 @@ button {
   border-radius: 0.2em;
   box-shadow: 5px 5px #E46503;
   cursor: pointer;
-  margin: 2em 0 0 0;
+  margin: 2em 1em 1em 0;
 }
 
 button:hover {
@@ -120,4 +120,40 @@ input:focus {
   outline: none;
   background-color: #ffffff;
   border: 0.15em solid #fb7c06;
+}
+
+#pageGame #game__quote {
+  width: 15.5em;
+  padding: 1.25em;
+  background-color: #ffffff;
+  box-shadow: 10px 10px rgba(0, 0, 0, 0.6117647059);
+}
+#pageGame #game__choices {
+  width: 18.75em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75em;
+  padding: 1em;
+}
+#pageGame button {
+  width: 3em;
+  height: 4em;
+  border: none;
+  background-color: #F3C132;
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.6117647059);
+  border-radius: 0.2em;
+  color: #000000;
+  flex: 1;
+}
+
+#pageCharacters button {
+  margin: 0;
+  width: 10em;
+}
+#pageCharacters #sortingButtons {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 0.5em 1em 0.5em 1em;
+  gap: 1em;
 }/*# sourceMappingURL=style.css.map */

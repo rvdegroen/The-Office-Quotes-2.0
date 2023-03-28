@@ -1,7 +1,5 @@
 // FOR GLOBAL STYLING
 @use "variables";
-@use "gamepage";
-@use "characterspage";
 
 *,
 *:after,
@@ -111,7 +109,7 @@ button {
   border-radius: .2em;
   box-shadow: variables.$button-shadow;
   cursor: pointer;
-  margin: 2em 0 0 0;
+  margin: 2em 1em 1em 0;
 }
 
 button:hover {
@@ -149,3 +147,55 @@ input:focus {
   border: .15em solid variables.$input-border-focus;
 }
 
+// GAME PAGE
+#pageGame {
+
+  // quote area
+  #game__quote {
+    width: 15.5em;
+    padding: 1.25em;
+    background-color: variables.$paper-color;
+    box-shadow: variables.$paper-shadow;
+  }
+
+  // game choices container
+  #game__choices {
+    width: 18.75em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75em;
+    padding:1em;
+  }
+
+  // game choices individual buttons
+  button {
+    width: 3em;
+    height: 4em;
+    border: none;
+    background-color: variables.$main-button;
+    box-shadow: variables.$sticky-shadow;
+    border-radius: .2em;
+    color: variables.$text-dark;
+    flex:1;
+  }
+
+}
+
+// CHARACTERS PAGE
+
+#pageCharacters {
+
+  button {
+    margin: 0;
+    width: 10em;
+  }
+
+  #sortingButtons {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: .5em 1em 0.5em 1em;
+    gap: 1em;
+  }
+
+}
