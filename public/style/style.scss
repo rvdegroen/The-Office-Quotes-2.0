@@ -1,0 +1,151 @@
+// FOR GLOBAL STYLING
+@use "variables";
+@use "gamepage";
+@use "characterspage";
+
+*,
+*:after,
+*:before{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+
+// BODY
+body {
+  background-color: variables.$background-color;
+  color: variables.$text-light;
+  font-family: "Work Sans", sans-serif;
+
+  // NAVIGATION
+  nav {
+    background-color: variables.$nav-color;
+    padding: 1em;
+    display:flex;
+    gap:1em;
+    flex-wrap: wrap;
+
+    // NAVIGATION LINKS IN NAV
+    a {
+      transition: .2s ease-in-out;
+      color: variables.$text-light;
+      text-decoration: none;
+      position: relative;
+    }
+
+    a::after {
+      background-color: variables.$hover-nav;
+      transition: all 0.2s ease-in-out;
+      content: "";
+      display: block;
+      position: absolute;
+      width: 0;
+      bottom: 0;
+      right: 0;
+      // height of the line underneath
+      height: 0.1em;
+      // position of line underneath
+      margin: -0.3em 0;
+    }
+
+    a:hover {
+      transition: .2s ease-in-out;
+      color: variables.$hover-button;
+    }
+
+    // "animating" ::after on hover
+    a:hover::after {
+      background-color: variables.$hover-button;
+      left: 0;
+      width: 100%;
+    }
+  }
+}
+
+// MAIN
+main {
+
+  div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  // CHARACTERS TABLE
+  table {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: .6em;
+
+    th {
+      margin: 0 1em;
+    }
+    
+    td {
+      padding: .1em;
+    }
+  }
+}
+
+// TEXT ELEMENTS
+h1 {
+  margin:3em 1em 1em 1em;
+  text-align: center;
+}
+
+p {
+  max-width: 20em;
+  text-align: center;
+  padding: 0 1em 0 1em;
+}
+
+// BUTTONS - standard use on homepage
+button {
+  transition: .2s ease-in-out;
+  background-color: variables.$main-button;
+  color: variables.$text-dark;
+  border: none;
+  padding: .5em 1em;
+  border-radius: .2em;
+  box-shadow: variables.$button-shadow;
+  cursor: pointer;
+  margin: 2em 0 0 0;
+}
+
+button:hover {
+  background-color: variables.$hover-button;
+  box-shadow:none;
+}
+
+button:focus {
+  background-color: variables.$focus-button;
+  box-shadow:none;
+}
+
+// INPUT - used on characters page
+input {
+  position:relative;
+  transition: .2s ease-in-out;
+  background-color: variables.$input-background;
+  padding: .4em;
+  margin-bottom:1em;
+  border-radius: .2em;
+  border: .15em solid transparent;
+  max-width: 50%;
+}
+
+input:hover {
+  outline:none;
+  background-color: variables.$input-hover;
+  border: .15em solid variables.$input-border-hover;
+}
+
+input:focus {
+  transition: .2s ease-in-out;
+  outline:none;
+  background-color: variables.$input-focus;
+  border: .15em solid variables.$input-border-focus;
+}
+
