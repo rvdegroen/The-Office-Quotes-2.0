@@ -50,12 +50,12 @@ body {
 
     a:hover {
       transition: .2s ease-in-out;
-      color: variables.$hover-button;
+      color: variables.$main-button;
     }
 
     // "animating" ::after on hover
     a:hover::after {
-      background-color: variables.$hover-button;
+      background-color: variables.$main-button;
       left: 0;
       width: 100%;
     }
@@ -91,7 +91,7 @@ main {
 
 // TEXT ELEMENTS
 h1 {
-  margin:3em 1em 1em 1em;
+  margin:1.5em 1em 1em 1em;
   text-align: center;
 }
 
