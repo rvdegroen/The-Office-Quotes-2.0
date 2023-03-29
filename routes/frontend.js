@@ -12,13 +12,17 @@ router.get("/", (req, res) => {
 
 // game
 router.get("/game", async (req, res) => {
-	// fetch random quote
-	  const response = await fetch("https://www.officeapi.dev/api/quotes/random");
-	  const data = await response.json();
-	//   res.json(data.data);
-	console.log(data);
-	// render page
-	res.render("pages/game", { quote : data.data });
+	try {
+		// fetch random quote
+		const response = await fetch("https://www.officeapi.dev/api/quotes/random");
+		const data = await response.json();
+		console.log(data);
+		res.render("pages/game", { quote : data.data });
+	} catch (err) {
+		// res.render("pages/game/error")
+		res.send("Error fetching data.")
+	}
+	
 });
 
 // characters
