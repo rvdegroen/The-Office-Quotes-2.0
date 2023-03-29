@@ -18,7 +18,7 @@ router.get("/game", async (req, res) => {
 	//   res.json(data.data);
 	console.log(data);
 	// render page
-	res.render("pages/game", { quote : data });
+	res.render("pages/game", { quote : data.data });
 });
 
 // characters
