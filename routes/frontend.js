@@ -1,6 +1,7 @@
 // IMPORTS
 import express from "express";
 import fetch from "node-fetch";
+import shuffle from "shuffle-array";
 
 // VARIABLES
 export const router = express.Router();
@@ -14,19 +15,47 @@ router.get("/", (req, res) => {
 router.get("/game", async (req, res) => {
 	try {
 		// fetch random quote
-		const response = await fetch("https://www.officeapi.dev/api/quotes/random");
-		const data = await response.json();
-		console.log(data);
-		res.render("pages/game", { quote : data.data });
+		const quoteResponse = await fetch("https://www.officeapi.dev/api/quotes/random");
+		const quoteData = await quoteResponse.json();
+		const $quote = quoteData.data;
+
+		// fetch all characters
+		const charactersResponse = await fetch("https://www.officeapi.dev/api/characters");
+		const charactersData = await charactersResponse.json();
+		const characters = charactersData.data;
+
+		// take the speaker of the quote out of all the characters
+		const speaker = `${$quote.character.firstname} ${$quote.character.lastname}`;
+		const remainingCharacters = characters
+			// takes object and turns into string
+			.map((character) => `${character.firstname} ${character.lastname}`)
+			// remaining characters do not include the one who spoke the quote
+			.filter((character) => character !== speaker);
+		// 3 wrong choices: remaining characters, shuffle it and take the first 3 remaining/random characters
+		const wrongChoices = remainingCharacters.slice(0, 3);
+		// make a new array with the speaker and 3 wrong choices and shuffle it
+		const choices = shuffle([speaker, ...wrongChoices]);
+
+		for (const choice of choices) {
+			const button = document.createElement("button");
+			button.textContent = choice;
+		}
+
+		console.log(choices);
+		// console.log(shuffleArray(remainingCharacters));
+
+		// const $choices;
+
+		console.log(speaker);
+
+		res.render("pages/game", { quote: $quote });
 	} catch (err) {
 		// res.render("pages/game/error")
-		res.send("Error fetching data.")
+		res.send("Error fetching data.");
 	}
-	
 });
 
 // characters
 router.get("/characters", (req, res) => {
 	res.render("pages/characters");
 });
-
