@@ -3,200 +3,195 @@
 
 *,
 *:after,
-*:before{
-    box-sizing: border-box;
-    margin:0;
-    padding:0;
+*:before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 // BODY
 body {
-  background-color: variables.$background-color;
-  color: variables.$text-light;
-  font-family: "Work Sans", sans-serif;
+	background-color: variables.$background-color;
+	color: variables.$text-light;
+	font-family: "Work Sans", sans-serif;
 
-  // NAVIGATION
-  nav {
-    background-color: variables.$nav-color;
-    padding: 1em;
-    display:flex;
-    gap:1em;
-    flex-wrap: wrap;
+	// NAVIGATION
+	nav {
+		background-color: variables.$nav-color;
+		padding: 1em;
+		display: flex;
+		gap: 1em;
+		flex-wrap: wrap;
 
-    // NAVIGATION LINKS IN NAV
-    a {
-      transition: .2s ease-in-out;
-      color: variables.$text-light;
-      text-decoration: none;
-      position: relative;
-    }
+		// NAVIGATION LINKS IN NAV
+		a {
+			transition: 0.2s ease-in-out;
+			color: variables.$text-light;
+			text-decoration: none;
+			position: relative;
+		}
 
-    a::after {
-      background-color: variables.$hover-nav;
-      transition: all 0.2s ease-in-out;
-      content: "";
-      display: block;
-      position: absolute;
-      width: 0;
-      bottom: 0;
-      right: 0;
-      // height of the line underneath
-      height: 0.1em;
-      // position of line underneath
-      margin: -0.3em 0;
-    }
+		a::after {
+			background-color: variables.$hover-nav;
+			transition: all 0.2s ease-in-out;
+			content: "";
+			display: block;
+			position: absolute;
+			width: 0;
+			bottom: 0;
+			right: 0;
+			// height of the line underneath
+			height: 0.1em;
+			// position of line underneath
+			margin: -0.3em 0;
+		}
 
-    a:hover {
-      transition: .2s ease-in-out;
-      color: variables.$main-button;
-    }
+		a:hover {
+			transition: 0.2s ease-in-out;
+			color: variables.$main-button;
+		}
 
-    // "animating" ::after on hover
-    a:hover::after {
-      background-color: variables.$main-button;
-      left: 0;
-      width: 100%;
-    }
-  }
+		// "animating" ::after on hover
+		a:hover::after {
+			background-color: variables.$main-button;
+			left: 0;
+			width: 100%;
+		}
+	}
 }
 
 // MAIN
 main {
+	div {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: center;
+	}
 
-  div {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-  }
+	// CHARACTERS TABLE
+	table {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		margin-top: 0.6em;
 
-  // CHARACTERS TABLE
-  table {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: .6em;
+		th {
+			margin: 0 1em;
+		}
 
-    th {
-      margin: 0 1em;
-    }
-    
-    td {
-      padding: .1em;
-    }
-  }
+		td {
+			padding: 0.1em;
+		}
+	}
 }
 
 // TEXT ELEMENTS
 h1 {
-  margin:1.5em 1em 1em 1em;
-  text-align: center;
+	margin: 1.5em 1em 1em 1em;
+	text-align: center;
 }
 
 p {
-  max-width: 20em;
-  text-align: center;
-  padding: 0 1em 0 1em;
+	max-width: 20em;
+	text-align: center;
+	padding: 0 1em 0 1em;
 }
 
 // BUTTONS - standard use on homepage
 button {
-  transition: .2s ease-in-out;
-  background-color: variables.$main-button;
-  color: variables.$text-dark;
-  border: none;
-  padding: .5em 1em;
-  border-radius: .2em;
-  box-shadow: variables.$button-shadow;
-  cursor: pointer;
-  margin: 2em 1em 1em 0;
+	transition: 0.2s ease-in-out;
+	background-color: variables.$main-button;
+	color: variables.$text-dark;
+	border: none;
+	padding: 0.5em 1em;
+	border-radius: 0.2em;
+	box-shadow: variables.$button-shadow;
+	cursor: pointer;
+	margin: 2em 1em 1em 0;
 }
 
 button:hover {
-  background-color: variables.$hover-button;
-  box-shadow:none;
+	background-color: variables.$hover-button;
+	box-shadow: none;
 }
 
 button:focus {
-  background-color: variables.$focus-button;
-  box-shadow:none;
+	background-color: variables.$focus-button;
+	box-shadow: none;
 }
 
 // INPUT - used on characters page
 input {
-  position:relative;
-  transition: .2s ease-in-out;
-  background-color: variables.$input-background;
-  padding: .4em;
-  margin-bottom:1em;
-  border-radius: .2em;
-  border: .15em solid transparent;
-  max-width: 50%;
+	position: relative;
+	transition: 0.2s ease-in-out;
+	background-color: variables.$input-background;
+	padding: 0.4em;
+	margin-bottom: 1em;
+	border-radius: 0.2em;
+	border: 0.15em solid transparent;
+	max-width: 50%;
 }
 
 input:hover {
-  outline:none;
-  background-color: variables.$input-hover;
-  border: .15em solid variables.$input-border-hover;
+	outline: none;
+	background-color: variables.$input-hover;
+	border: 0.15em solid variables.$input-border-hover;
 }
 
 input:focus {
-  transition: .2s ease-in-out;
-  outline:none;
-  background-color: variables.$input-focus;
-  border: .15em solid variables.$input-border-focus;
+	transition: 0.2s ease-in-out;
+	outline: none;
+	background-color: variables.$input-focus;
+	border: 0.15em solid variables.$input-border-focus;
 }
 
 // GAME PAGE
 #pageGame {
+	// quote area
+	#game__quote {
+		width: 15.5em;
+		padding: 1.25em;
+		background-color: variables.$paper-color;
+		box-shadow: variables.$paper-shadow;
+		color: variables.$text-dark;
+	}
 
-  // quote area
-  #game__quote {
-    width: 15.5em;
-    padding: 1.25em;
-    background-color: variables.$paper-color;
-    box-shadow: variables.$paper-shadow;
-    color: variables.$text-dark;
-  }
+	// game choices container
+	#game__choices {
+		width: 18.75em;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75em;
+		padding: 1em;
+	}
 
-  // game choices container
-  #game__choices {
-    width: 18.75em;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75em;
-    padding:1em;
-  }
-
-  // game choices individual buttons
-  button {
-    width: 3em;
-    height: 4em;
-    border: none;
-    background-color: variables.$main-button;
-    box-shadow: variables.$sticky-shadow;
-    border-radius: .2em;
-    color: variables.$text-dark;
-    flex:1;
-  }
-
+	// game choices individual buttons
+	button {
+		width: 3em;
+		height: 4em;
+		border: none;
+		background-color: variables.$main-button;
+		box-shadow: variables.$sticky-shadow;
+		border-radius: 0.2em;
+		color: variables.$text-dark;
+		flex: 1;
+	}
 }
 
 // CHARACTERS PAGE
 
 #pageCharacters {
+	button {
+		margin: 0;
+		width: 10em;
+	}
 
-  button {
-    margin: 0;
-    width: 10em;
-  }
-
-  #sortingButtons {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    margin: .5em 1em 0.5em 1em;
-    gap: 1em;
-  }
-
+	#sortingButtons {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		margin: 0.5em 1em 0.5em 1em;
+		gap: 1em;
+	}
 }
