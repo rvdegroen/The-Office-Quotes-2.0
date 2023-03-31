@@ -17,7 +17,7 @@ router.get("/game", async (req, res) => {
 		// fetch random quote
 		const quoteResponse = await fetch("https://www.officeapi.dev/api/quotes/random");
 		const quoteData = await quoteResponse.json();
-		const $quote = quoteData.data;
+		const quote = quoteData.data;
 
 		// fetch all characters
 		const charactersResponse = await fetch("https://www.officeapi.dev/api/characters");
@@ -25,7 +25,7 @@ router.get("/game", async (req, res) => {
 		const characters = charactersData.data;
 
 		// take the speaker of the quote out of all the characters
-		const speaker = `${$quote.character.firstname} ${$quote.character.lastname}`;
+		const speaker = `${quote.character.firstname} ${quote.character.lastname}`;
 		const remainingCharacters = characters
 			// takes object and turns into string
 			.map((character) => `${character.firstname} ${character.lastname}`)
@@ -35,11 +35,7 @@ router.get("/game", async (req, res) => {
 		const wrongChoices = remainingCharacters.slice(0, 3);
 		// make a new array with the speaker and 3 wrong choices and shuffle it
 		const choices = shuffle([speaker, ...wrongChoices]);
-
-		for (const choice of choices) {
-			const button = document.createElement("button");
-			button.textContent = choice;
-		}
+		// for loop in ejs
 
 		console.log(choices);
 		// console.log(shuffleArray(remainingCharacters));
@@ -48,10 +44,10 @@ router.get("/game", async (req, res) => {
 
 		console.log(speaker);
 
-		res.render("pages/game", { quote: $quote });
+		res.render("pages/game", { quote, speaker, choices });
 	} catch (err) {
 		// res.render("pages/game/error")
-		res.send("Error fetching data.");
+		res.send(`error: ${err.message}`);
 	}
 });
 
