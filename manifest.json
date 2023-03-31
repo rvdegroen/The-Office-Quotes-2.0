@@ -1,0 +1,20 @@
+{
+	"name": "The Office Quotes 2.0",
+	"short_name": "TOQ 2.0",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#2E2147",
+	"description": "Are you someone who likes The Office (US) and just want to relax a bit with a funny quotes quiz? Then this is the application for you.",
+	"icons": [
+		{
+			"src": "images/icon-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "images/icon-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}
