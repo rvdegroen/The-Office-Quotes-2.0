@@ -58,6 +58,7 @@ main table {
   align-items: center;
   flex-direction: column;
   margin-top: 0.6em;
+  font-size: 1rem;
 }
 main table th {
   margin: 0 1em;
@@ -87,6 +88,7 @@ button {
   box-shadow: 5px 5px #E46503;
   cursor: pointer;
   margin: 2em 1em 1em 0;
+  font-size: 1rem;
 }
 
 button:hover {
@@ -108,6 +110,7 @@ input {
   border-radius: 0.2em;
   border: 0.15em solid transparent;
   max-width: 50%;
+  font-size: 1rem;
 }
 
 input:hover {
