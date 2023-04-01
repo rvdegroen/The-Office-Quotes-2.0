@@ -142,8 +142,8 @@ input:focus {
   background-color: #F3C132;
   border-radius: 0.2em;
   color: #000000;
-  width: 6em;
-  height: 7em;
+  width: 5.5em;
+  height: 6em;
 }
 #pageGame button:hover {
   background-color: #fba106;
