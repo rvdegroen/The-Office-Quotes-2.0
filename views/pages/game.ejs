@@ -7,7 +7,19 @@
 			<div id="pageGame">
 				<h1>The Office Quotes Quiz</h1>
 				<p id="game__quote"><%= quote.content %></p>
-				<div id="game__choices"></div>
+				<div id="game__choices">
+					<% for (const choice of choices) { %>
+					<button
+						<% if (choice === speaker) { %>
+						onclick="correctChoice()"
+						<% } else { %>
+						onclick="wrongChoice(`<%= speaker %>`)"
+						<% } %>
+					>
+						<%= choice %>
+					</button>
+					<% } %>
+				</div>
 			</div>
 		</main>
 	</body>
