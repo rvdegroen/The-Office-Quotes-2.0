@@ -32,7 +32,7 @@ router.get("/game", async (req, res) => {
 			// remaining characters do not include the one who spoke the quote
 			.filter((character) => character !== speaker);
 		// 3 wrong choices: remaining characters, shuffle it and take the first 3 remaining/random characters
-		const wrongChoices = remainingCharacters.slice(0, 3);
+		const wrongChoices = shuffle(remainingCharacters).slice(0, 3);
 		// make a new array with the speaker and 3 wrong choices and shuffle it
 		const choices = shuffle([speaker, ...wrongChoices]);
 		// for loop in ejs
