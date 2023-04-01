@@ -134,21 +134,24 @@ input:focus {
   color: #000000;
 }
 #pageGame #game__choices {
-  width: 18.75em;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75em;
-  padding: 1em;
+  flex-direction: row;
 }
 #pageGame button {
-  width: 3em;
-  height: 4em;
   border: none;
   background-color: #F3C132;
-  box-shadow: 5px 5px rgba(0, 0, 0, 0.6117647059);
   border-radius: 0.2em;
   color: #000000;
-  flex: 1;
+  width: 6em;
+  height: 7em;
+}
+#pageGame button:hover {
+  background-color: #fba106;
+  box-shadow: none;
+}
+#pageGame button:focus {
+  background-color: #E46503;
+  box-shadow: none;
 }
 
 #pageCharacters button {

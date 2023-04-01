@@ -163,23 +163,28 @@ input:focus {
 
 	// game choices container
 	#game__choices {
-		width: 18.75em;
 		display: flex;
-		flex-wrap: wrap;
-		gap: 0.75em;
-		padding: 1em;
+		flex-direction: row;
 	}
 
 	// game choices individual buttons
 	button {
-		width: 3em;
-		height: 4em;
 		border: none;
 		background-color: variables.$main-button;
-		box-shadow: variables.$sticky-shadow;
 		border-radius: 0.2em;
 		color: variables.$text-dark;
-		flex: 1;
+		width: 6em;
+		height: 7em;
+	}
+
+	button:hover {
+		background-color: variables.$hover-button;
+		box-shadow: none;
+	}
+
+	button:focus {
+		background-color: variables.$focus-button;
+		box-shadow: none;
 	}
 }
 
