@@ -10,7 +10,7 @@ This application is a progressive web app, which means it can be used offline, y
 
 # Installation & running the app
 
-There are two ways to use my app: by cloning this github and then using it on `localhost:3000` or by installing it via the browser (first you need to have this app running on `localhost:3000` to do this).
+There are two ways to use my app: by cloning this github and then using it on `localhost:3000` or by installing it via the browser (you can go to my deployed app in that case: https://the-office-quotes-2-0.vercel.app/).
 
 ## Installing the app on your local machine and run it on localhost:3000
 
@@ -20,7 +20,7 @@ There are two ways to use my app: by cloning this github and then using it on `l
 
 ## Installing the app as PWA
 
-1. First you need to have done the steps above on how to make the app run on your `localhost:3000`
+1. Go to my deployed app on https://the-office-quotes-2-0.vercel.app/
 2. Then you look in the adress bar and try to find an icon that has a screen with an arrow down. This means that the app is a PWA and you can install it on your local machine (www.youtube.com has this icon too).
 3. Just follow the steps and start up your application.
 
@@ -117,3 +117,7 @@ To compress your Sass files, you can use the following line in your terminal:
 ### Running Sass compiler simultaneously with your application
 
 If you wanted to compile you scss and run the application at the same time, just open 2nd terminal and run your application in it.
+
+## Service worker
+
+Service workers
