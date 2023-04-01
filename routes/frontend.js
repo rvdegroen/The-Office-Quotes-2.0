@@ -35,15 +35,7 @@ router.get("/game", async (req, res) => {
 		const wrongChoices = shuffle(remainingCharacters).slice(0, 3);
 		// make a new array with the speaker and 3 wrong choices and shuffle it
 		const choices = shuffle([speaker, ...wrongChoices]);
-		// for loop in ejs
-
-		console.log(choices);
-		// console.log(shuffleArray(remainingCharacters));
-
-		// const $choices;
-
-		console.log(speaker);
-
+		// give data output for in game.ejs file
 		res.render("pages/game", { quote, speaker, choices });
 	} catch (err) {
 		// res.render("pages/game/error")
