@@ -10,7 +10,7 @@ body {
   background-color: #2E2147;
   color: #ffffff;
   font-family: "Work Sans", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.3em;
 }
 body nav {
   background-color: #13121F;
@@ -58,7 +58,7 @@ main table {
   align-items: center;
   flex-direction: column;
   margin-top: 0.6em;
-  font-size: 1rem;
+  font-size: 1em;
 }
 main table th {
   margin: 0 1em;
@@ -73,9 +73,10 @@ h1 {
 }
 
 p {
-  max-width: 20em;
+  max-width: 18em;
   text-align: center;
   padding: 0 1em 0 1em;
+  margin: 0 1em;
 }
 
 button {
@@ -88,7 +89,7 @@ button {
   box-shadow: 5px 5px #E46503;
   cursor: pointer;
   margin: 2em 1em 1em 0;
-  font-size: 1rem;
+  font-size: 0.9em;
 }
 
 button:hover {
@@ -110,7 +111,7 @@ input {
   border-radius: 0.2em;
   border: 0.15em solid transparent;
   max-width: 50%;
-  font-size: 1rem;
+  font-size: 1em;
 }
 
 input:hover {
@@ -127,23 +128,29 @@ input:focus {
 }
 
 #pageGame #game__quote {
-  width: 15.5em;
   padding: 1.25em;
   background-color: #ffffff;
   box-shadow: 10px 10px rgba(0, 0, 0, 0.6117647059);
   color: #000000;
 }
+#pageGame h2 {
+  margin-top: 1em;
+}
 #pageGame #game__choices {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 #pageGame button {
   border: none;
   background-color: #F3C132;
   border-radius: 0.2em;
   color: #000000;
-  width: 5.5em;
-  height: 6em;
+  width: 6em;
+  height: 6.5em;
+  text-align: center;
+  padding: 0.5em;
+  font-size: 0.8em;
 }
 #pageGame button:hover {
   background-color: #fba106;

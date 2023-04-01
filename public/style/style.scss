@@ -14,7 +14,7 @@ body {
 	background-color: variables.$background-color;
 	color: variables.$text-light;
 	font-family: "Work Sans", sans-serif;
-	font-size: 1.3rem;
+	font-size: 1.3em;
 
 	// NAVIGATION
 	nav {
@@ -76,7 +76,7 @@ main {
 		align-items: center;
 		flex-direction: column;
 		margin-top: 0.6em;
-		font-size: 1rem;
+		font-size: 1em;
 
 		th {
 			margin: 0 1em;
@@ -95,9 +95,10 @@ h1 {
 }
 
 p {
-	max-width: 20em;
+	max-width: 18em;
 	text-align: center;
 	padding: 0 1em 0 1em;
+	margin: 0 1em;
 }
 
 // BUTTONS - standard use on homepage
@@ -111,7 +112,7 @@ button {
 	box-shadow: variables.$button-shadow;
 	cursor: pointer;
 	margin: 2em 1em 1em 0;
-	font-size: 1rem;
+	font-size: 0.9em;
 }
 
 button:hover {
@@ -134,7 +135,7 @@ input {
 	border-radius: 0.2em;
 	border: 0.15em solid transparent;
 	max-width: 50%;
-	font-size: 1rem;
+	font-size: 1em;
 }
 
 input:hover {
@@ -154,17 +155,22 @@ input:focus {
 #pageGame {
 	// quote area
 	#game__quote {
-		width: 15.5em;
 		padding: 1.25em;
 		background-color: variables.$paper-color;
 		box-shadow: variables.$paper-shadow;
 		color: variables.$text-dark;
 	}
 
+	// h2 of who said it
+	h2 {
+		margin-top: 1em;
+	}
+
 	// game choices container
 	#game__choices {
 		display: flex;
 		flex-direction: row;
+		flex-wrap: wrap;
 	}
 
 	// game choices individual buttons
@@ -173,8 +179,11 @@ input:focus {
 		background-color: variables.$main-button;
 		border-radius: 0.2em;
 		color: variables.$text-dark;
-		width: 5.5em;
-		height: 6em;
+		width: 6em;
+		height: 6.5em;
+		text-align: center;
+		padding: 0.5em;
+		font-size: 0.8em;
 	}
 
 	button:hover {
