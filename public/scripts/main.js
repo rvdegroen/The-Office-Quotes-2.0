@@ -13,3 +13,14 @@ window.wrongChoice = function (speaker) {
 	// refresh the page
 	location.reload();
 };
+
+// debounce for characters page when typing in the input
+window.debounce = function (func, timeout = 500) {
+	let timer;
+	return (...args) => {
+		clearTimeout(timer);
+		timer = setTimeout(() => {
+			func.apply(this, args);
+		}, timeout);
+	};
+};
