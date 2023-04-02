@@ -9,24 +9,24 @@
 		<main id="pageCharacters">
 			<div id="pageCharacters">
 				<h1>Characters</h1>
-                <form action="/characters">
+                <form action="/characters" id="searchForm">
 					<!-- whatever you put as name will be query parameter when you submit the form -->
 					<input id="characters__filter" placeholder="Search character" name="filter"></input>
-					<button type="submit">Search</button>
+					<button id="searchButton" type="submit">Search</button>
 				</form>
+
             	<div id="sortingButtons">
 					<form action="/characters">
 						<input type="hidden" name="sortDirection" value="asc" /> 
-						<button id="characters__sortAsc" type="submit">Sort by first name ascending</button>
+						<button id="characters__sortAsc" type="submit">Sort all by first name ascending</button>
 					</form>
                 	<form action="/characters">
 						<input type="hidden" name="sortDirection" value="desc" /> 
-						<button id="characters__sortDesc" type="submit">Sort by first name descending</button>
+						<button id="characters__sortDesc" type="submit">Sort all by first name descending</button>
 					</form>
             	</div>
 
 				<table>
-					<h2>All characters</h2>
 					<thead>
 					  <tr>
 						<th>First name</th>
