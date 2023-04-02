@@ -1,3 +1,12 @@
+/* work-sans-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/work-sans-v18-latin-regular.eot"); /* IE9 Compat Modes */
+  src: url("../fonts/work-sans-v18-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/work-sans-v18-latin-regular.woff2") format("woff2"), url("../fonts/work-sans-v18-latin-regular.woff") format("woff"), url("../fonts/work-sans-v18-latin-regular.ttf") format("truetype"), url("../fonts/work-sans-v18-latin-regular.svg#WorkSans") format("svg"); /* Legacy iOS */
+}
 *,
 *:after,
 *:before {

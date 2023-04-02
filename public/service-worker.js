@@ -3,7 +3,14 @@
 self.addEventListener("install", function (e) {
 	e.waitUntil(
 		caches.open("my-website-name").then(function (cache) {
-			return cache.addAll(["../manifest.json"]);
+			return cache.addAll([
+				"/manifest.json",
+				"/fonts/work-sans-v18-latin-regular.eot",
+				"/fonts/work-sans-v18-latin-regular.svg",
+				"/fonts/work-sans-v18-latin-regular.ttf",
+				"/fonts/work-sans-v18-latin-regular.woff",
+				"/fonts/work-sans-v18-latin-regular.woff2",
+			]);
 		})
 	);
 });
