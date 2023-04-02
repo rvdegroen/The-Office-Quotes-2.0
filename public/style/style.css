@@ -135,10 +135,6 @@ button:focus {
   background-color: #e46503;
   box-shadow: none;
 }
-#pageGame .space {
-  height: 8em;
-  width: 2em;
-}
 
 #pageCharacters button {
   margin: 0;
