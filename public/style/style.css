@@ -134,12 +134,15 @@ input:focus {
   color: #000000;
 }
 #pageGame h2 {
-  margin-top: 1em;
+  margin-top: 1.5em;
+  text-align: center;
 }
 #pageGame #game__choices {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin: 1em;
+  gap: 1em;
 }
 #pageGame button {
   border: none;
@@ -151,6 +154,7 @@ input:focus {
   text-align: center;
   padding: 0.5em;
   font-size: 0.8em;
+  margin: 0;
 }
 #pageGame button:hover {
   background-color: #fba106;

@@ -163,7 +163,8 @@ input:focus {
 
 	// h2 of who said it
 	h2 {
-		margin-top: 1em;
+		margin-top: 1.5em;
+		text-align: center;
 	}
 
 	// game choices container
@@ -171,6 +172,8 @@ input:focus {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
+		margin: 1em;
+		gap: 1em;
 	}
 
 	// game choices individual buttons
@@ -184,6 +187,7 @@ input:focus {
 		text-align: center;
 		padding: 0.5em;
 		font-size: 0.8em;
+		margin: 0;
 	}
 
 	button:hover {
