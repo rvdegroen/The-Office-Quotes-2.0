@@ -176,6 +176,9 @@ button:focus {
   margin: 0.5em 1em 0.5em 1em;
   gap: 1em;
 }
+#pageCharacters h2 {
+  margin-top: 1em;
+}
 #pageCharacters table {
   padding-top: 1em;
   margin-bottom: 7em;
