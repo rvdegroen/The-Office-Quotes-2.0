@@ -44,6 +44,18 @@ router.get("/game", async (req, res) => {
 });
 
 // characters
-router.get("/characters", (req, res) => {
-	res.render("pages/characters");
+router.get("/characters", async (req, res) => {
+	try {
+		// fetch all characters
+		const charactersResponse = await fetch("https://www.officeapi.dev/api/characters");
+		const charactersData = await charactersResponse.json();
+		const characters = charactersData.data;
+
+		console.log(characters);
+
+		res.render("pages/characters", { characters });
+	} catch (err) {
+		// res.render("pages/game/error")
+		res.send(`error: ${err.message}`);
+	}
 });
