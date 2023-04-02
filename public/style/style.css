@@ -154,7 +154,7 @@ button:focus {
 }
 #pageCharacters #searchButton {
   transform: translateX(0em);
-  box-shadow: none;
+  box-shadow: 3px 0px 0px #e46503;
   width: -moz-fit-content;
   width: fit-content;
   transform: translateX(-0.2em);
