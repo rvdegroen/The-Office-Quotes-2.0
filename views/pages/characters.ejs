@@ -1,17 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-	<%-include('../partials/head');%>
+	<head>
+		<%-include('../partials/head');%>
+		<script src="./scripts/characters.js" type="module" defer></script>
+	</head>
 	<body>
 		<%-include('../partials/header');%>
-		<main>
+		<main id="pageCharacters">
 			<div id="pageCharacters">
 				<h1>Characters</h1>
-                <input id="characters__filter" placeholder="Search character"></input>
+                <form action="/characters">
+					<!-- whatever you put as name will be query parameter when you submit the form -->
+					<input id="characters__filter" placeholder="Search character" name="filter"></input>
+					<button type="submit">Search</button>
+				</form>
             	<div id="sortingButtons">
-                	<button id="characters__sortAsc">Sort by first name ascending</button>
-                	<button id="characters__sortDesc">Sort by first name descending</button>
+					<form action="/characters">
+						<input type="hidden" name="sortDirection" value="asc" /> 
+						<button id="characters__sortAsc" type="submit">Sort by first name ascending</button>
+					</form>
+                	<form action="/characters">
+						<input type="hidden" name="sortDirection" value="desc" /> 
+						<button id="characters__sortDesc" type="submit">Sort by first name descending</button>
+					</form>
             	</div>
+
+				<table>
+					<h2>All characters</h2>
+					<thead>
+					  <tr>
+						<th>First name</th>
+						<th>Last name</th>
+					  </tr>
+
+					  <% for (const character of characters) { %>
+					  <tr>
+						<td> <%= character.firstname %> </td>
+						<td> <%= character.lastname %></td>
+					  </tr>
+					  <% } %>
+
+					</thead>
+					<tbody id="characters__tbody"></tbody>
+				  </table>
 			</div>
 		</main>
+
 	</body>
 </html>
