@@ -53,19 +53,6 @@ main div {
   flex-direction: column;
   justify-content: center;
 }
-main table {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 0.6em;
-  font-size: 1em;
-}
-main table th {
-  margin: 0 1em;
-}
-main table td {
-  padding: 0.1em;
-}
 
 h1 {
   margin: 1.5em 1em 1em 1em;
@@ -100,31 +87,6 @@ button:hover {
 button:focus {
   background-color: #e46503;
   box-shadow: none;
-}
-
-input {
-  position: relative;
-  transition: 0.2s ease-in-out;
-  background-color: #ebebeb;
-  padding: 0.4em;
-  margin-bottom: 1em;
-  border-radius: 0.2em;
-  border: 0.15em solid transparent;
-  max-width: 50%;
-  font-size: 1em;
-}
-
-input:hover {
-  outline: none;
-  background-color: #ffffff;
-  border: 0.15em solid #fba106;
-}
-
-input:focus {
-  transition: 0.2s ease-in-out;
-  outline: none;
-  background-color: #ffffff;
-  border: 0.15em solid #fb7c06;
 }
 
 #pageGame #game__quote {
@@ -169,10 +131,66 @@ input:focus {
   margin: 0;
   width: 10em;
 }
+#pageCharacters input {
+  position: relative;
+  transition: 0.2s ease-in-out;
+  background-color: #ffffff;
+  padding: 0.4em;
+  border-radius: 0.2em 0 0 0.2em;
+  border: 0.15em solid transparent;
+  width: 100%;
+  font-size: 1em;
+}
+#pageCharacters input:hover {
+  outline: none;
+  background-color: #ffffff;
+  border: 0.15em solid #ffcc5d;
+}
+#pageCharacters input:focus {
+  transition: 0.2s ease-in-out;
+  outline: none;
+  background-color: #ffffff;
+  border: 0.15em solid #fba106;
+}
+#pageCharacters #searchButton {
+  transform: translateX(0em);
+  box-shadow: none;
+  width: -moz-fit-content;
+  width: fit-content;
+  transform: translateX(-0.2em);
+}
+#pageCharacters #searchButton:hover {
+  background-color: #fba106;
+  box-shadow: none;
+}
+#pageCharacters #searchForm {
+  display: flex;
+  margin-bottom: 1em;
+  justify-content: center;
+  padding: 0 1em;
+}
 #pageCharacters #sortingButtons {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   margin: 0.5em 1em 0.5em 1em;
   gap: 1em;
+}
+#pageCharacters table {
+  padding-top: 1em;
+  margin-bottom: 7em;
+}
+#pageCharacters table th {
+  padding-bottom: 0.7em;
+  text-align: center;
+}
+#pageCharacters table td {
+  padding: 0.2em 0.5em;
+  border-bottom: 0.1em rgb(13, 51, 53) solid;
+}
+#pageCharacters table td:nth-of-type(1) {
+  text-align: end;
+}
+#pageCharacters table td:nth-of-type(2) {
+  transform: translateX(-0.1em);
 }/*# sourceMappingURL=style.css.map */

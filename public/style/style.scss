@@ -69,23 +69,6 @@ main {
 		flex-direction: column;
 		justify-content: center;
 	}
-
-	// CHARACTERS TABLE
-	table {
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		margin-top: 0.6em;
-		font-size: 1em;
-
-		th {
-			margin: 0 1em;
-		}
-
-		td {
-			padding: 0.1em;
-		}
-	}
 }
 
 // TEXT ELEMENTS
@@ -123,32 +106,6 @@ button:hover {
 button:focus {
 	background-color: variables.$focus-button;
 	box-shadow: none;
-}
-
-// INPUT - used on characters page
-input {
-	position: relative;
-	transition: 0.2s ease-in-out;
-	background-color: variables.$input-background;
-	padding: 0.4em;
-	margin-bottom: 1em;
-	border-radius: 0.2em;
-	border: 0.15em solid transparent;
-	max-width: 50%;
-	font-size: 1em;
-}
-
-input:hover {
-	outline: none;
-	background-color: variables.$input-hover;
-	border: 0.15em solid variables.$input-border-hover;
-}
-
-input:focus {
-	transition: 0.2s ease-in-out;
-	outline: none;
-	background-color: variables.$input-focus;
-	border: 0.15em solid variables.$input-border-focus;
 }
 
 // GAME PAGE
@@ -209,11 +166,84 @@ input:focus {
 		width: 10em;
 	}
 
+	// INPUT - used on characters page
+	input {
+		position: relative;
+		transition: 0.2s ease-in-out;
+		background-color: variables.$input-background;
+		padding: 0.4em;
+		border-radius: 0.2em 0 0 0.2em;
+		border: 0.15em solid transparent;
+		// max-width: 50%;
+		width: 100%;
+		font-size: 1em;
+	}
+
+	input:hover {
+		outline: none;
+		background-color: variables.$input-focus;
+		border: 0.15em solid variables.$main-button;
+	}
+
+	input:focus {
+		transition: 0.2s ease-in-out;
+		outline: none;
+		background-color: variables.$input-focus;
+		border: 0.15em solid variables.$input-border-hover;
+	}
+
+	#searchButton {
+		transform: translateX(0em);
+		box-shadow: none;
+		width: fit-content;
+		transform: translateX(-0.2em);
+	}
+
+	#searchButton:hover {
+		background-color: variables.$input-border-hover;
+		box-shadow: none;
+	}
+
+	#searchForm {
+		display: flex;
+		margin-bottom: 1em;
+		justify-content: center;
+		padding: 0 1em;
+	}
+
 	#sortingButtons {
 		display: flex;
 		flex-wrap: wrap;
 		flex-direction: row;
 		margin: 0.5em 1em 0.5em 1em;
 		gap: 1em;
+	}
+
+	// CHARACTERS TABLE
+	table {
+		padding-top: 1em;
+		margin-bottom: 7em;
+
+		// for the table heading: text: firstname and lastname
+		th {
+			padding-bottom: 0.7em;
+			text-align: center;
+		}
+
+		// for the characters actual name
+		td {
+			padding: 0.2em 0.5em;
+			border-bottom: variables.$border-bottom;
+		}
+
+		// for the firstname
+		td:nth-of-type(1) {
+			text-align: end;
+		}
+
+		// for the lastname
+		td:nth-of-type(2) {
+			transform: translateX(-0.1em);
+		}
 	}
 }
