@@ -160,7 +160,6 @@ button:focus {
 		padding: 0.5em;
 		font-size: 0.8em;
 		margin: 0;
-		margin-bottom: 8em;
 	}
 
 	button:hover {
@@ -171,6 +170,10 @@ button:focus {
 	button:focus {
 		background-color: variables.$focus-button;
 		box-shadow: none;
+	}
+
+	.space {
+		margin-bottom: 8em;
 	}
 }
 

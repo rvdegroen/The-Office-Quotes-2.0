@@ -126,7 +126,6 @@ button:focus {
   padding: 0.5em;
   font-size: 0.8em;
   margin: 0;
-  margin-bottom: 8em;
 }
 #pageGame button:hover {
   background-color: #fba106;
@@ -135,6 +134,9 @@ button:focus {
 #pageGame button:focus {
   background-color: #e46503;
   box-shadow: none;
+}
+#pageGame .space {
+  margin-bottom: 8em;
 }
 
 #pageCharacters button {
