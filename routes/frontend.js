@@ -44,16 +44,45 @@ router.get("/game", async (req, res) => {
 });
 
 // characters
-router.get("/characters", async (req, res) => {
+router.get(`/characters`, async (req, res) => {
 	try {
 		// fetch all characters
 		const charactersResponse = await fetch("https://www.officeapi.dev/api/characters");
 		const charactersData = await charactersResponse.json();
-		const characters = charactersData.data;
+		let characters = charactersData.data;
 
-		console.log(characters);
+		// express filter from query parameter .filter is from the name="filter"
+		const filter = req.query.filter;
+		console.log("Filter:", filter);
 
-		res.render("pages/characters", { characters });
+		// if character gets filtered, then for every character, look at firstname in lowercase and if the name starts with filteredname, look in lowercase
+		if (filter) {
+			characters = characters.filter((character) =>
+				character.firstname.toLowerCase().startsWith(filter.toLowerCase())
+			);
+		}
+
+		// sortDirection is name="sortDirection"
+		const sortDirection = req.query.sortDirection;
+		console.log(sortDirection);
+
+		if (sortDirection) {
+			characters = characters.sort((a, b) =>
+				sortDirection === "asc"
+					? //   localecompare looks at the comparison with strings, result will be -1, 0, 1
+					  // array has a and b [1,2,3] a=1 b=2 => how do you want to compare this?
+					  //   asc = 1
+					  a.firstname.localeCompare(b.firstname)
+					: //   desc = -1
+					  b.firstname.localeCompare(a.firstname)
+			);
+		}
+
+		// console.log(characters);
+
+		res.render("pages/characters", {
+			characters,
+		});
 	} catch (err) {
 		// res.render("pages/game/error")
 		res.send(`error: ${err.message}`);
