@@ -1,7 +1,8 @@
 // IMPORTS
 import express from "express";
-import {router as frontendRouter} from "./routes/frontend.js";
-import {router as apiRouter} from "./routes/api.js";
+import { router as frontendRouter } from "./routes/frontend.js";
+import { router as apiRouter } from "./routes/api.js";
+import compression from "compression";
 
 // VARIABLES
 const app = express();
@@ -20,5 +21,8 @@ app.use("/", frontendRouter);
 
 // api
 app.use("/api", apiRouter);
+
+// middleware for compression
+app.use(compression({ level: 9 }));
 
 app.listen(port);
