@@ -12,10 +12,6 @@ self.addEventListener("install", function (e) {
 				"/fonts/work-sans-v18-latin-regular.woff2",
 				"/scripts/main.js",
 				"/images/offline.png",
-				"/",
-				"/index.html",
-				"/style/style.css",
-				"/style/variables.css",
 			]);
 		})
 	);
