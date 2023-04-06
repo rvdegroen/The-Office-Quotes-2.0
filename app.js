@@ -22,6 +22,12 @@ app.use("/", frontendRouter);
 // api
 app.use("/api", apiRouter);
 
+// offline
+app.use(function (req, res, next) {
+	res.status(404);
+	res.render("pages/offline");
+});
+
 // middleware for compression
 app.use(compression({ level: 9 }));
 
