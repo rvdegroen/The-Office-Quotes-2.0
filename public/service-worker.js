@@ -10,6 +10,8 @@ self.addEventListener("install", function (e) {
 				"/fonts/work-sans-v18-latin-regular.ttf",
 				"/fonts/work-sans-v18-latin-regular.woff",
 				"/fonts/work-sans-v18-latin-regular.woff2",
+				"/scripts/main.js",
+				"/images/offline.png",
 			]);
 		})
 	);
