@@ -13,6 +13,7 @@ self.addEventListener("install", function (e) {
 				"/scripts/main.js",
 				"/images/offline.png",
 				"/",
+				"/index.html",
 			]);
 		})
 	);
