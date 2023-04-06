@@ -266,3 +266,19 @@ button:focus {
 		}
 	}
 }
+
+// ANIMATION
+@keyframes example-animation {
+	from {
+		height: 0; /* initial height */
+	}
+	to {
+		height: 100%; /* final height */
+	}
+}
+
+#pageGame {
+	animation-name: example-animation;
+	animation-duration: 10s;
+	animation-timing-function: ease;
+}
