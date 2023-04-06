@@ -29,3 +29,9 @@ There are two ways to use my app: by cloning this github and then using it on `l
 1. Go to my deployed app on https://the-office-quotes-20-production.up.railway.app/
 2. Then you look in the adress bar and try to find an icon that has a screen with an arrow down. This means that the app is a PWA and you can install it on your local machine (www.youtube.com has this icon too).
 3. Just follow the steps and start up your application.
+
+# Activity diagram
+
+Here you see my activity diagram with my service worker implemented:
+
+![activity diagram](./images/activity-diagram.png)
