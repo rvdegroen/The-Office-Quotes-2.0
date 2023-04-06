@@ -16,8 +16,6 @@ self.addEventListener("install", function (e) {
 				"/index.html",
 				"/style/style.css",
 				"/style/variables.css",
-				"game.html",
-				"characters.html",
 			]);
 		})
 	);
