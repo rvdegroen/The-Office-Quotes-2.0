@@ -4,7 +4,9 @@ The source code is distributed under the GPL-3.0 license. See LICENSE.md for mor
 
 # The Office Quotes 2.0
 
-The office quiz is a responsive website for bored students (or for bored people in general) who also happen to be enjoy the tv show "The Office" (US) and want to enjoy themselves a little bit with a quiz.
+The office quiz is a responsive progressive web app for bored students (or for bored people in general) who also happen to be enjoy the tv show "The Office" (US) and want to enjoy themselves a little bit with a quiz.
+
+![my app](/images/app.png)
 
 The website contains a quiz in which you need to guess which character from the tv show, said the quote.
 
