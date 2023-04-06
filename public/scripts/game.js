@@ -1,4 +1,4 @@
-console.log("hi I'm main bitch");
+console.log("hi this works");
 
 // function when the user makes a correct or wrong choice on /game page
 // global scope is the window object and this is only for browsers, otherwise it won't recognize the function in my game.ejs
