@@ -14,8 +14,10 @@ self.addEventListener("install", function (e) {
 				"/images/offline.png",
 				"/",
 				"/index.html",
-				"/styles/style.css",
-				"/styles/variables.css",
+				"/style/style.css",
+				"/style/variables.css",
+				"game.html",
+				"characters.html",
 			]);
 		})
 	);
