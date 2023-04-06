@@ -23,10 +23,10 @@ app.use("/", frontendRouter);
 app.use("/api", apiRouter);
 
 // 404 page
-app.use(function (req, res, next) {
-	res.status(404);
-	res.render("pages/404");
-});
+// app.use(function (req, res, next) {
+// 	res.status(404);
+// 	res.render("pages/404");
+// });
 
 // middleware for compression
 app.use(compression({ level: 9 }));
