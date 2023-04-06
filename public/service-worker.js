@@ -14,6 +14,8 @@ self.addEventListener("install", function (e) {
 				"/images/offline.png",
 				"/",
 				"/index.html",
+				"/style/style.css",
+				"/style/variables.css",
 			]);
 		})
 	);
