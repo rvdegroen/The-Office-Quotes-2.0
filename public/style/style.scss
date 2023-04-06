@@ -125,6 +125,7 @@ button:focus {
 
 // GAME PAGE
 #pageGame {
+	margin-bottom: 5em;
 	// quote area
 	#game__quote {
 		padding: 1.25em;
@@ -267,18 +268,20 @@ button:focus {
 	}
 }
 
-// ANIMATION
-@keyframes example-animation {
-	from {
-		height: 0; /* initial height */
-	}
-	to {
-		height: 100%; /* final height */
+// offline page
+
+#offline {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+
+	button {
+		width: 5em;
+		margin: 0 auto;
 	}
 }
 
-#pageGame {
-	animation-name: example-animation;
-	animation-duration: 10s;
-	animation-timing-function: ease;
+a {
+	color: #000;
+	text-decoration: none;
 }
