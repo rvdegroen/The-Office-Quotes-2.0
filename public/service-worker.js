@@ -10,7 +10,6 @@ self.addEventListener("install", function (e) {
 				"/fonts/work-sans-v18-latin-regular.ttf",
 				"/fonts/work-sans-v18-latin-regular.woff",
 				"/fonts/work-sans-v18-latin-regular.woff2",
-				"/pages/offline.ejs",
 			]);
 		})
 	);
@@ -18,19 +17,7 @@ self.addEventListener("install", function (e) {
 self.addEventListener("fetch", function (event) {
 	event.respondWith(
 		caches.match(event.request).then(function (response) {
-			return (
-				response ||
-				fetch(event.request)
-					.then(function (response) {
-						return caches.open("The-Office-Quotes-2.0").then(function (cache) {
-							cache.put(event.request, response.clone());
-							return response;
-						});
-					})
-					.catch(function () {
-						return caches.match("/pages/offline.ejs");
-					})
-			);
+			return response || fetch(event.request);
 		})
 	);
 });
