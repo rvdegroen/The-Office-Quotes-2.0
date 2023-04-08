@@ -4,24 +4,21 @@
 self.addEventListener("install", function (e) {
 	// (waitUntil) method ensures that the service worker will stay active on the background and doesn't become idle until the cache has been "filled" with the assigned files.
 	e.waitUntil(
-		//( caches.open) method creates a new cache called "my-website-name".
-		caches.open("my-website-name").then(function (cache) {
-			// (cache.adAll) method adds a list of files to the cache.
-			return cache.addAll([
-				"/manifest.json",
-				"/fonts/work-sans-v18-latin-regular.eot",
-				"/fonts/work-sans-v18-latin-regular.svg",
-				"/fonts/work-sans-v18-latin-regular.ttf",
-				"/fonts/work-sans-v18-latin-regular.woff",
-				"/fonts/work-sans-v18-latin-regular.woff2",
-				"/scripts/main.js",
-				"/images/offline.png",
-				"/",
-				"/index.html",
-				"/style/style.css",
-				"/style/variables.css",
-			]);
-		})
+		// (caches.open) method creates a new cache called "the-office".
+		caches
+			.open("the-office")
+			.then(function (cache) {
+				// (cache.adAll) method adds a list of files to the cache.
+				return cache.addAll([
+					"/manifest.json",
+					"/fonts/work-sans-v18-latin-regular.woff",
+					"/fonts/work-sans-v18-latin-regular.woff2",
+				]);
+			})
+			.catch(function (error) {
+				// Log any errors that occur while caching files to the console.
+				console.error("Failed to cache files:", error);
+			})
 	);
 });
 // event listener is triggered whenever the web app attempts to fetch a resource.
