@@ -24,14 +24,27 @@ self.addEventListener("install", function (e) {
 	);
 });
 
-// if the resources from line 13 are not found in the cache, then these will be fetched as following:
 self.addEventListener("fetch", function (event) {
-	// The `respondWith` method is used to intercept the request and provide a response.
 	event.respondWith(
-		// The `caches.match` method checks if the requested resource is in the cache.
-		caches.match(event.request).then(function (response) {
-			// If the resource is in the cache, it is returned, otherwise, the resource is fetched using the `fetch` method.
-			return response || fetch(event.request);
-		})
+		caches
+			.match(event.request)
+			.then(function (response) {
+				// If the resource is in the cache, it is returned, otherwise, the resource is fetched using the `fetch` method.
+				return (
+					response ||
+					fetch(event.request).then(function (fetchResponse) {
+						// The fetched response is cloned to be stored in the cache and returned as the response.
+						const responseToCache = fetchResponse.clone();
+						caches.open(CACHE_NAME).then(function (cache) {
+							cache.put(event.request, responseToCache);
+						});
+						return fetchResponse;
+					})
+				);
+			})
+			.catch(function (error) {
+				console.error("Error fetching the resource:", error);
+				// Return an offline fallback page or a custom error response
+			})
 	);
 });
