@@ -16,6 +16,7 @@ self.addEventListener("install", function (e) {
 					"/style/style.css",
 					"/style/variables.css",
 					"/offline/offline.html",
+					"/images/offline.png",
 				]);
 			})
 			.catch(function (error) {
