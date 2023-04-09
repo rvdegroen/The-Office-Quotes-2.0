@@ -6,8 +6,8 @@ if ("serviceWorker" in navigator) {
 	});
 }
 
-if (!navigator.onLine) {
-	const img = document.createElement("img");
-	img.src = "/images/offline.png"; // should be cached in service worker
-	document.body.appendChild(img);
-}
+// if (!navigator.onLine) {
+// 	const img = document.createElement("img");
+// 	img.src = "/images/offline.png"; // should be cached in service worker
+// 	document.body.appendChild(img);
+// }
