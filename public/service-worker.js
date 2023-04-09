@@ -31,8 +31,8 @@ self.addEventListener("fetch", function (event) {
 		caches
 			.match(event.request)
 			.then(function (response) {
-				// if the request is going to this url, it will not cache it
-				if (event.request.url === "https://officeapi.dev/api/quotes") {
+				// if we're requesting an html page (document), it will not cache it to show an offline page (the pages are generated dynamically so they cannot be cached)
+				if (event.request.destination === "document") {
 					return fetch(event.request);
 				}
 				// If the resource is in the cache, it is returned, otherwise, the resource is fetched using the `fetch` method.
