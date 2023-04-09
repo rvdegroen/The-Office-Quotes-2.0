@@ -35,7 +35,7 @@ self.addEventListener("fetch", function (event) {
 					fetch(event.request).then(function (fetchResponse) {
 						// The fetched response is cloned to be stored in the cache and returned as the response.
 						const responseToCache = fetchResponse.clone();
-						caches.open(CACHE_NAME).then(function (cache) {
+						caches.open("the-office").then(function (cache) {
 							cache.put(event.request, responseToCache);
 						});
 						return fetchResponse;
