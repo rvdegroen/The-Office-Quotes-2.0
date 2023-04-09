@@ -46,8 +46,13 @@ self.addEventListener("fetch", function (event) {
 			})
 			.catch(function (error) {
 				console.error("Error fetching the resource:", error);
-				// Return an offline fallback page or a custom error response
-				return caches.match("/offline/offline.html");
+				return new Response("<h1>Service Unavailable</h1>", {
+					status: 503,
+					statusText: "Service Unavailable",
+					headers: new Headers({
+						"Content-Type": "text/html",
+					}),
+				});
 			})
 	);
 });
