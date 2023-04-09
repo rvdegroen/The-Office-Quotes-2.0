@@ -31,6 +31,10 @@ self.addEventListener("fetch", function (event) {
 		caches
 			.match(event.request)
 			.then(function (response) {
+				// if the request is going to this url, it will not cache it
+				if (event.request.url === "https://officeapi.dev/api/quotes") {
+					return fetch(event.request);
+				}
 				// If the resource is in the cache, it is returned, otherwise, the resource is fetched using the `fetch` method.
 				return (
 					response ||
