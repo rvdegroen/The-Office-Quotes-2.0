@@ -13,6 +13,8 @@ self.addEventListener("install", function (e) {
 					"/manifest.json",
 					"/fonts/work-sans-v18-latin-regular.woff",
 					"/fonts/work-sans-v18-latin-regular.woff2",
+					"/style/style.css",
+					"/style/variables.css",
 				]);
 			})
 			.catch(function (error) {
@@ -21,7 +23,8 @@ self.addEventListener("install", function (e) {
 			})
 	);
 });
-// event listener is triggered whenever the web app attempts to fetch a resource.
+
+// if the resources from line 13 are not found in the cache, then these will be fetched as following:
 self.addEventListener("fetch", function (event) {
 	// The `respondWith` method is used to intercept the request and provide a response.
 	event.respondWith(
