@@ -1,7 +1,7 @@
 // src: https://web.dev/service-workers-registration/
 console.log("This is so stupid.");
 
-fetch("https://officeapi.dev/api/quotes");
+// fetch("https://officeapi.dev/api/quotes");
 
 if ("serviceWorker" in navigator) {
 	window.addEventListener("load", function () {
