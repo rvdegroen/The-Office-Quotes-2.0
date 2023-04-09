@@ -7,7 +7,7 @@ if ("serviceWorker" in navigator) {
 	});
 }
 
-fetch("https://officeapi.dev/api/quotes", { mode: "cors" });
+fetch("https://officeapi.dev/api/quotes", { method: "HEAD" });
 
 // if (!navigator.onLine) {
 // 	const img = document.createElement("img");
