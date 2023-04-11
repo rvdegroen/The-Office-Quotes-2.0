@@ -10,6 +10,7 @@ self.addEventListener('install', function (e) {
 			.then(function (cache) {
 				// (cache.adAll) method adds a list of files to the cache.
 				return cache.addAll([
+					'/',
 					'/manifest.json',
 					'/fonts/work-sans-v18-latin-regular.woff',
 					'/fonts/work-sans-v18-latin-regular.woff2',
