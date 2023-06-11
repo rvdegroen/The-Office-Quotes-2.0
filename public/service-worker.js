@@ -17,6 +17,10 @@ self.addEventListener('install', (event) => {
 				'/style/variables.css',
 				'/images/offline.png',
 				'/images/favicon.ico',
+				'/images/icon-192x192.png',
+				'/scripts/main.js',
+				'/scripts/game.js',
+				'/scripts/characters.js',
 			]);
 		})
 	);
@@ -36,6 +40,58 @@ self.addEventListener('fetch', (event) => {
 	}
 });
 
+function onError(error) {
+	// console.error('Error fetching the resource:', error);
+	// src: https://gist.github.com/felquis/7e149e1db16aa57b1354
+	// return own html page
+	return new Response(
+		`<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="UTF-8" />
+			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+			<meta
+				name="description"
+				content="The Office (US) quotes quiz for stressed students or just to relax."
+			/>
+			<!-- css -->
+			<link rel="stylesheet" href="/style/style.css" />
+			<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+			<link rel="manifest" crossorigin="use-credentials" href="manifest.json" />
+			<title>The Office Quiz 2.0</title>
+			<!-- js -->
+			<script src="./scripts/main.js" defer></script>
+	
+			<script src="./scripts/game.js" type="module" defer></script>
+		</head>
+		<body>
+			<header>
+				<nav>
+					<a href="/">Home</a>
+					<a href="/game">Game</a>
+					<a href="/characters">Characters</a>
+				</nav>
+			</header>
+	
+			<main id="offline">
+				<h1>You are offline!</h1>
+				<button><a href="/game">Try again</a></button>
+				<img src="/images/offline.png" alt="you are offline" />
+			</main>
+		</body>
+	</html>
+	`,
+		{
+			status: 503,
+			statusText: 'Service Unavailable',
+			headers: new Headers({
+				'Content-Type': 'text/html',
+			}),
+		}
+	);
+}
+
 // fetches the requested content from the cache
 function fetchFromCache(request) {
 	return (
@@ -52,69 +108,24 @@ function fetchFromCache(request) {
 				return fetch(request);
 			})
 			// when you're offline, it does the catch function, because it cannot fetch when you're offline (error)
-			.catch(function (error) {
-				console.error('Error fetching the resource:', error);
-				// src: https://gist.github.com/felquis/7e149e1db16aa57b1354
-				// return own html page
-				return new Response(
-					`<!DOCTYPE html>
-		<html lang="en">
-			<head>
-				<meta charset="UTF-8" />
-				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-				<meta
-					name="description"
-					content="The Office (US) quotes quiz for stressed students or just to relax."
-				/>
-				<!-- css -->
-				<link rel="stylesheet" href="/style/style.css" />
-				<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
-				<link rel="manifest" crossorigin="use-credentials" href="manifest.json" />
-				<title>The Office Quiz 2.0</title>
-				<!-- js -->
-				<script src="./scripts/main.js" defer></script>
-		
-				<script src="./scripts/game.js" type="module" defer></script>
-			</head>
-			<body>
-				<header>
-					<nav>
-						<a href="/">Home</a>
-						<a href="/game">Game</a>
-						<a href="/characters">Characters</a>
-					</nav>
-				</header>
-		
-				<main id="offline">
-					<h1>You are offline!</h1>
-					<button><a href="/game">Try again</a></button>
-					<img src="/images/offline.png" alt="you are offline" />
-				</main>
-			</body>
-		</html>
-		`,
-					{
-						status: 503,
-						statusText: 'Service Unavailable',
-						headers: new Headers({
-							'Content-Type': 'text/html',
-						}),
-					}
-				);
-			})
+			.catch(onError)
 	);
 }
 
 // updates the cache from the server with the latest content
 function updateCache(request) {
 	return caches.open(CACHE).then((cache) => {
-		return fetch(request).then((response) => {
-			// put the response into the cache
-			return cache.put(request, response.clone()).then(() => {
-				// return the original response
-				return response;
-			});
-		});
+		return (
+			fetch(request)
+				.then((response) => {
+					// put the response into the cache
+					return cache.put(request, response.clone()).then(() => {
+						// return the original response
+						return response;
+					});
+				})
+				// when you're offline, it does the catch function, because it cannot fetch when you're offline (error)
+				.catch(onError)
+		);
 	});
 }
