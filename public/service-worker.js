@@ -9,11 +9,13 @@ self.addEventListener('install', (event) => {
 			// file paths to cache
 			cache.addAll([
 				'/',
+				'/characters',
 				'/manifest.json',
 				'/fonts/work-sans-v18-latin-regular.woff',
 				'/fonts/work-sans-v18-latin-regular.woff2',
 				'/style/style.css',
 				'/style/variables.css',
+				'/images/offline.png',
 			]);
 		})
 	);
@@ -35,13 +37,71 @@ self.addEventListener('fetch', (event) => {
 
 // fetches the requested content from the cache
 function fetchFromCache(request) {
-	return caches.match(request).then((matching) => {
-		if (matching) {
-			return matching;
-		}
-
-		return fetch(request);
-	});
+	return (
+		caches
+			// matching is the response to a particular request from cache e.g. "/game"
+			// request is the URL
+			.match(request)
+			.then((matching) => {
+				// if it DOES exist in the responsed, return it otherwise it doesn't exist
+				if (matching) {
+					return matching;
+				}
+				// if it doesn't exist in the cache, then fetch it
+				return fetch(request);
+			})
+			// when you're offline, it does the catch function, because it cannot fetch when you're offline (error)
+			.catch(function (error) {
+				console.error('Error fetching the resource:', error);
+				// src: https://gist.github.com/felquis/7e149e1db16aa57b1354
+				// return own html page
+				return new Response(
+					`<!DOCTYPE html>
+		<html lang="en">
+			<head>
+				<meta charset="UTF-8" />
+				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<meta
+					name="description"
+					content="The Office (US) quotes quiz for stressed students or just to relax."
+				/>
+				<!-- css -->
+				<link rel="stylesheet" href="/style/style.css" />
+				<link rel="manifest" crossorigin="use-credentials" href="manifest.json" />
+				<title>The Office Quiz 2.0</title>
+				<!-- js -->
+				<script src="./scripts/main.js" defer></script>
+		
+				<script src="./scripts/game.js" type="module" defer></script>
+			</head>
+			<body>
+				<header>
+					<nav>
+						<a href="/">Home</a>
+						<a href="/game">Game</a>
+						<a href="/characters">Characters</a>
+					</nav>
+				</header>
+		
+				<main id="offline">
+					<h1>You are offline!</h1>
+					<button><a href="/game">Try again</a></button>
+					<img src="/images/offline.png" alt="you are offline" />
+				</main>
+			</body>
+		</html>
+		`,
+					{
+						status: 503,
+						statusText: 'Service Unavailable',
+						headers: new Headers({
+							'Content-Type': 'text/html',
+						}),
+					}
+				);
+			})
+	);
 }
 
 // updates the cache from the server with the latest content
