@@ -10,7 +10,7 @@ The office quiz is a responsive progressive web app for bored students (or for b
 
 The website contains a quiz in which you need to guess which character from the tv show, said the quote.
 
-You can find the deployed version on my app on the following link: https://the-office-quotes-20-production.up.railway.app/
+You can find the deployed version on my app on the following link: https://tiny-bracelet-jay.cyclic.app/
 
 ## Progressive Web App
 
@@ -18,7 +18,7 @@ This application is a progressive web app, which means it can be used offline, y
 
 # Installation & running the app
 
-There are two ways to use my app: by cloning this github and then using it on `localhost:3000` or by installing it via the browser (you can go to my deployed app in that case: https://the-office-quotes-20-production.up.railway.app/).
+There are two ways to use my app: by cloning this github and then using it on `localhost:3000` or by installing it via the browser (you can go to my deployed app in that case: https://tiny-bracelet-jay.cyclic.app/).
 
 ## Installing the app on your local machine and run it on localhost:3000
 
@@ -28,7 +28,7 @@ There are two ways to use my app: by cloning this github and then using it on `l
 
 ## Installing the app as PWA
 
-1. Go to my deployed app on https://the-office-quotes-20-production.up.railway.app/
+1. Go to my deployed app on https://tiny-bracelet-jay.cyclic.app/
 2. Then you look in the adress bar and try to find an icon that has a screen with an arrow down. This means that the app is a PWA and you can install it on your local machine (www.youtube.com has this icon too).
 3. Just follow the steps and start up your application.
 
