@@ -1,114 +1,58 @@
-// src: https://stackoverflow.com/questions/55925496/pwa-best-practice-web-or-local-fonts/66132921#66132921
+const CACHE = 'cache';
 
-// is triggered when the service worker is first installed.
-self.addEventListener('install', function (e) {
-	// (waitUntil) method ensures that the service worker will stay active on the background and doesn't become idle until the cache has been "filled" with the assigned files.
-	e.waitUntil(
-		// (caches.open) method creates a new cache called "the-office".
-		caches
-			.open('the-office')
-			.then(function (cache) {
-				// (cache.adAll) method adds a list of files to the cache.
-				return cache.addAll([
-					'/',
-					'/manifest.json',
-					'/fonts/work-sans-v18-latin-regular.woff',
-					'/fonts/work-sans-v18-latin-regular.woff2',
-					'/style/style.css',
-					'/style/variables.css',
-					'/offline/offline.html',
-					'/images/offline.png',
-				]);
-			})
-			.catch(function (error) {
-				// Log any errors that occur while caching files to the console.
-				console.error('Failed to cache files:', error);
-			})
+// add content to the cache when the service worker is installed
+self.addEventListener('install', (event) => {
+	// .waituntil methoded ensures sw stays active on bg and doesn't becomes idle until the cache has been filled with all the assigned files
+	event.waitUntil(
+		// caches.open method creates new cache called "CACHE"
+		caches.open(CACHE).then((cache) => {
+			// file paths to cache
+			cache.addAll([
+				'/',
+				'/manifest.json',
+				'/fonts/work-sans-v18-latin-regular.woff',
+				'/fonts/work-sans-v18-latin-regular.woff2',
+				'/style/style.css',
+				'/style/variables.css',
+			]);
+		})
 	);
 });
 
-self.addEventListener('fetch', function (event) {
-	event.respondWith(
-		caches
-			.match(event.request)
-			.then(function (response) {
-				// if the request is going to this url, it will not cache it
-				if (event.request.url === 'https://officeapi.dev/api/quotes') {
-					// if we're requesting an html page (document), it will not cache it to show an offline page (the pages are generated dynamically so they cannot be cached)
-					// if (event.request.destination === "document") {
+// update cache when online & only respond to cache when offline
+self.addEventListener('fetch', (event) => {
+	if (navigator.onLine) {
+		// If online, try to respond to the fetch request with content from the cache
+		event.respondWith(fetchFromCache(event.request));
 
-					return fetch(event.request);
-				}
-				// If the resource is in the cache, it is returned, otherwise, the resource is fetched using the `fetch` method.
-				return (
-					response ||
-					fetch(event.request).then(function (fetchResponse) {
-						// The fetched response is cloned to be stored in the cache and returned as the response.
-						const responseToCache = fetchResponse.clone();
-						caches.open('the-office').then(function (cache) {
-							cache.put(event.request, responseToCache);
-						});
-						return fetchResponse;
-					})
-				);
-			})
-
-			.catch(function (error) {
-				console.error('Error fetching the resource:', error);
-				// Return an offline fallback page or a custom error response
-				return caches.match('/offline/offline.html');
-			})
-	);
+		// Then, update the cache with the latest content from the server and return the original response from updateCache
+		event.waitUntil(updateCache(event.request));
+	} else {
+		// If offline, only try to respond with content from the cache
+		event.respondWith(fetchFromCache(event.request));
+	}
 });
 
-// 			.catch(function (error) {
-// 				console.error("Error fetching the resource:", error);
-// 				// src: https://gist.github.com/felquis/7e149e1db16aa57b1354
-// 				return new Response(
-// 					`<!DOCTYPE html>
-// 				<html lang="en">
-// 					<head>
-// 						<meta charset="UTF-8" />
-// 						<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-// 						<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-// 						<meta
-// 							name="description"
-// 							content="The Office (US) quotes quiz for stressed students or just to relax."
-// 						/>
-// 						<!-- css -->
-// 						<link rel="stylesheet" href="/style/style.css" />
-// 						<link rel="manifest" crossorigin="use-credentials" href="manifest.json" />
-// 						<title>The Office Quiz 2.0</title>
-// 						<!-- js -->
-// 						<script src="./scripts/main.js" defer></script>
+// fetches the requested content from the cache
+function fetchFromCache(request) {
+	return caches.match(request).then((matching) => {
+		if (matching) {
+			return matching;
+		}
 
-// 						<script src="./scripts/game.js" type="module" defer></script>
-// 					</head>
-// 					<body>
-// 						<header>
-// 							<nav>
-// 								<a href="/">Home</a>
-// 								<a href="/game">Game</a>
-// 								<a href="/characters">Characters</a>
-// 							</nav>
-// 						</header>
+		return fetch(request);
+	});
+}
 
-// 						<main id="offline">
-// 							<h1>You are offline!</h1>
-// 							<button><a href="/">Try again</a></button>
-// 							<img src="../images/offline.png" alt="you are offline" />
-// 						</main>
-// 					</body>
-// 				</html>
-// 				`,
-// 					{
-// 						status: 503,
-// 						statusText: "Service Unavailable",
-// 						headers: new Headers({
-// 							"Content-Type": "text/html",
-// 						}),
-// 					}
-// 				);
-// 			})
-// 	);
-// });
+// updates the cache from the server with the latest content
+function updateCache(request) {
+	return caches.open(CACHE).then((cache) => {
+		return fetch(request).then((response) => {
+			// put the response into the cache
+			return cache.put(request, response.clone()).then(() => {
+				// return the original response
+				return response;
+			});
+		});
+	});
+}

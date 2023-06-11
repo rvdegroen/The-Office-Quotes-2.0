@@ -1,26 +1,30 @@
 // IMPORTS
-import express from "express";
-import fetch from "node-fetch";
-import shuffle from "shuffle-array";
+import express from 'express';
+import fetch from 'node-fetch';
+import shuffle from 'shuffle-array';
 
 // VARIABLES
 export const router = express.Router();
 
 // homepage
-router.get("/", (req, res) => {
-	res.render("pages/index");
+router.get('/', (req, res) => {
+	res.render('pages/index');
 });
 
 // game
-router.get("/game", async (req, res) => {
+router.get('/game', async (req, res) => {
 	try {
 		// fetch random quote
-		const quoteResponse = await fetch("https://www.officeapi.dev/api/quotes/random");
+		const quoteResponse = await fetch(
+			'https://the-office-quotes-shy0.onrender.com/api/quotes/random'
+		);
 		const quoteData = await quoteResponse.json();
 		const quote = quoteData.data;
 
 		// fetch all characters
-		const charactersResponse = await fetch("https://www.officeapi.dev/api/characters");
+		const charactersResponse = await fetch(
+			'https://the-office-quotes-shy0.onrender.com/api/characters'
+		);
 		const charactersData = await charactersResponse.json();
 		const characters = charactersData.data;
 
@@ -36,9 +40,10 @@ router.get("/game", async (req, res) => {
 		// make a new array with the speaker and 3 wrong choices and shuffle it
 		const choices = shuffle([speaker, ...wrongChoices]);
 		// give data output for in game.ejs file
-		res.render("pages/game", { quote, speaker, choices });
+		res.render('pages/game', { quote, speaker, choices });
 	} catch (err) {
 		// res.render("pages/game/error")
+		console.error(err);
 		res.send(`error: ${err.message}`);
 	}
 });
@@ -47,13 +52,15 @@ router.get("/game", async (req, res) => {
 router.get(`/characters`, async (req, res) => {
 	try {
 		// fetch all characters
-		const charactersResponse = await fetch("https://www.officeapi.dev/api/characters");
+		const charactersResponse = await fetch(
+			'https://the-office-quotes-shy0.onrender.com/api/characters'
+		);
 		const charactersData = await charactersResponse.json();
 		let characters = charactersData.data;
 
 		// express filter from query parameter .filter is from the name="filter"
 		const filter = req.query.filter;
-		console.log("Filter:", filter);
+		console.log('Filter:', filter);
 
 		// if character gets filtered, then for every character, look at firstname in lowercase and if the name starts with filteredname, look in lowercase
 		if (filter) {
@@ -68,7 +75,7 @@ router.get(`/characters`, async (req, res) => {
 
 		if (sortDirection) {
 			characters = characters.sort((a, b) =>
-				sortDirection === "asc"
+				sortDirection === 'asc'
 					? //   localecompare looks at the comparison with strings, result will be -1, 0, 1
 					  // array has a and b [1,2,3] a=1 b=2 => how do you want to compare this?
 					  //   asc = 1
@@ -80,7 +87,7 @@ router.get(`/characters`, async (req, res) => {
 
 		// console.log(characters);
 
-		res.render("pages/characters", {
+		res.render('pages/characters', {
 			characters,
 		});
 	} catch (err) {
