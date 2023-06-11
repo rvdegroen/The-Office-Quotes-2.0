@@ -83,6 +83,7 @@ function onError(error) {
 	</html>
 	`,
 		{
+			// the page is not cached/available
 			status: 503,
 			statusText: 'Service Unavailable',
 			headers: new Headers({
