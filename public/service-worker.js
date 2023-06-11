@@ -16,6 +16,7 @@ self.addEventListener('install', (event) => {
 				'/style/style.css',
 				'/style/variables.css',
 				'/images/offline.png',
+				'/images/favicon.ico',
 			]);
 		})
 	);
@@ -68,6 +69,7 @@ function fetchFromCache(request) {
 				/>
 				<!-- css -->
 				<link rel="stylesheet" href="/style/style.css" />
+				<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
 				<link rel="manifest" crossorigin="use-credentials" href="manifest.json" />
 				<title>The Office Quiz 2.0</title>
 				<!-- js -->
